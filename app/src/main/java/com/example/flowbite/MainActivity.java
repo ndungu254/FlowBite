@@ -10,5 +10,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String gitToken="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";
     }
 }
