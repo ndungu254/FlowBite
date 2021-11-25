@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "109135851725",
+    "project_id": "flowbite-8d6ae",
+    "storage_bucket": "flowbite-8d6ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109135851725:android:c2d1d64336430dac7e7984",
+        "android_client_info": {
+          "package_name": "com.example.flowbite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109135851725-bip9f0n7v7p7seouigvjji73t9cnjeve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVNsuQ54wu02dy2VRP-Mox_It3Z9aMxJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109135851725-bip9f0n7v7p7seouigvjji73t9cnjeve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
