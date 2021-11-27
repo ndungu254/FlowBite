@@ -56,6 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String gitToken="ghp_7rZw7muVj44qAWoDSe0bhm7Cu8DT2WN2kkklD8";
+        String gitToken="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";
     }
 }
