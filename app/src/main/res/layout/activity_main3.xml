@@ -491,7 +491,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/montserrat_bold"
             android:text="NET PAY"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -502,7 +502,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/montserrat_bold"
             android:gravity="right"
             android:text="Ksh 131,734.00"
             android:textSize="17sp"
