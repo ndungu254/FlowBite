@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:fontFamily="@font/montserrat_bold"
         android:gravity="center_horizontal"
         android:text="Login"
         android:textSize="25sp"
@@ -22,35 +23,78 @@
         android:id="@+id/eTMail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/edditextbackground"
+        android:fontFamily="@font/montserrat"
+        android:hint="Email"
         android:inputType="textEmailAddress"
-        android:hint="Email" />
+        android:minHeight="48dp"
+        android:paddingLeft="10dp" />
 
 
     <EditText
         android:id="@+id/eTpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/edditextbackground"
+        android:fontFamily="@font/montserrat"
         android:hint="password"
-        android:inputType="numberPassword" />
+        android:inputType="numberPassword"
+        android:minHeight="48dp"
+        android:paddingLeft="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center">
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="100px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/buttonbackground"
+            android:fontFamily="@font/montserrat_bold"
             android:text="login" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_horizontal"
+            android:text="Don't have an account?"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btSignup"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/buttonbackground"
+            android:backgroundTint="@null"
+            android:backgroundTintMode="@null"
+            android:fontFamily="@font/montserrat_bold"
             android:text="sign up" />
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible" />
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:visibility="gone" />
 
 </LinearLayout>

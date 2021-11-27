@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etMail,etPassword;
     Button btLogin,btSignup;
     FirebaseAuth fAuth;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,31 +30,42 @@ public class MainActivity extends AppCompatActivity {
         etPassword=findViewById(R.id.eTpassword);
         btLogin=findViewById(R.id.btLogin);
         btSignup=findViewById(R.id.btSignup);
+        progressBar=findViewById(R.id.progressBar);
 
 
         fAuth=FirebaseAuth.getInstance();
+
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mail=etMail.getText().toString().trim();
                 String password=etPassword.getText().toString().trim();
-
                 if (mail.isEmpty()) {
                     etMail.setError("Email is empty");
+                    return;
                 }
                 if (password.isEmpty()) {
                     etPassword.setError("Email is empty");
+                    return;
                 }
-                fAuth.createUserWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                if (password.length()<6) {
+                    etPassword.setError("password is short");
+                    return;
+                }
+                fAuth.signInWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isComplete()) {
-                            Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "login success", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity3.class));
                         }
-                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+
                     }
                 });
+
             }
         });
 

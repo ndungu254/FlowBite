@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
+    android:background="@color/design_default_color_surface"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".MainActivity">
@@ -16,6 +16,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="100dp"
         android:layout_marginRight="20dp"
+        android:fontFamily="@font/montserrat_bold"
         android:gravity="center_horizontal"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
@@ -30,8 +31,11 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/edditextbackground"
+        android:fontFamily="@font/montserrat"
         android:hint="First name"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:paddingLeft="8dp" />
 
     <EditText
         android:id="@+id/lName"
@@ -40,21 +44,27 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/edditextbackground"
+        android:fontFamily="@font/montserrat"
         android:hint="Last name"
         android:minHeight="48dp"
+        android:paddingLeft="8dp"
         android:paddingTop="3dp"
         android:paddingBottom="3dp" />
 
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/phoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/edditextbackground"
+        android:fontFamily="@font/montserrat"
         android:hint="Phone"
         android:inputType="phone"
         android:minHeight="48dp"
+        android:paddingLeft="8dp"
         android:paddingTop="3dp"
         android:paddingBottom="3dp" />
 
@@ -66,9 +76,12 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/edditextbackground"
+        android:fontFamily="@font/montserrat"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:paddingLeft="8dp"
         android:paddingTop="3dp"
         android:paddingBottom="3dp" />
 
@@ -79,16 +92,22 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/edditextbackground"
+        android:fontFamily="@font/montserrat"
         android:hint="password"
         android:inputType="numberPassword"
         android:minHeight="48dp"
+        android:paddingLeft="8dp"
         android:paddingTop="3dp"
         android:paddingBottom="3dp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -96,19 +115,33 @@
             android:id="@+id/btnSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/buttonbackground"
+            android:fontFamily="@font/montserrat_bold"
             android:text="signup" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
             android:text="Have an account?"
-            android:textStyle="bold"/>
+            android:gravity="center_horizontal"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/buttonbackground"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Login" />
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible" />
 
 </LinearLayout>

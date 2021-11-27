@@ -24,7 +24,7 @@
         tools:layout_editor_absoluteY="79dp" />
 
     <TextView
-        android:id="@+id/payrollNumner"
+        android:id="@+id/payrollNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
@@ -95,7 +95,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView36"
+            android:id="@+id/basicSalary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -127,7 +127,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView38"
+            android:id="@+id/house"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -151,7 +151,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView41"
+            android:id="@+id/commuter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -174,7 +174,7 @@
             android:text="Overtime" />
 
         <TextView
-            android:id="@+id/textView42"
+            android:id="@+id/overtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -244,7 +244,7 @@
             android:fontFamily="@font/montserrat"/>
 
         <TextView
-            android:id="@+id/textView48"
+            android:id="@+id/contribution"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -269,13 +269,13 @@
 
         <TextView
             android:id="@+id/taxableIncome"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="16sp"
-            android:gravity="right"
             android:fontFamily="@font/montserrat"
-            android:text="Ksh167,690" />
+            android:gravity="right"
+            android:text="Ksh167,690"
+            android:textSize="16sp"
+            android:layout_width="wrap_content" />
 
     </LinearLayout>
     <LinearLayout
@@ -290,14 +290,14 @@
             android:fontFamily="@font/montserrat"/>
 
         <TextView
-            android:id="@+id/textView49"
-            android:layout_width="wrap_content"
+            android:id="@+id/taxchargeable"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="16sp"
-            android:gravity="right"
             android:fontFamily="@font/montserrat"
-            android:text="Ksh29000" />
+            android:gravity="right"
+            android:text="Ksh29000"
+            android:textSize="16sp"
+            android:layout_width="wrap_content" />
 
     </LinearLayout>
     <LinearLayout
@@ -312,7 +312,7 @@
             android:fontFamily="@font/montserrat"/>
 
         <TextView
-            android:id="@+id/textView51"
+            android:id="@+id/monthRelief"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -323,6 +323,22 @@
 
     </LinearLayout>
 
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:background="#000000" />
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="20dp"
+        android:background="#000000" />
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
@@ -330,18 +346,12 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="0dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Deducrions from Gross Pay"
+        android:text="Deductions"
+        android:gravity="center_horizontal"
         android:textSize="16sp"
         android:textStyle="bold" />
 
 
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:background="#000000" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -358,7 +368,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView28"
+            android:id="@+id/payee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -384,7 +394,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView30"
+            android:id="@+id/nhif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -408,7 +418,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView32"
+            android:id="@+id/nssf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -433,7 +443,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView34"
+            android:id="@+id/savings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -442,28 +452,34 @@
             android:text="Ksh36,041"
             android:textSize="16sp" />
     </LinearLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#000000" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="0dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Total deductions"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/withheldTax"
+            android:id="@+id/totatdeductions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="right"
@@ -482,14 +498,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat_bold"
             android:text="NET PAY"
@@ -497,10 +513,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/netPay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="right"
@@ -516,9 +532,20 @@
         android:layout_marginTop="0dp"
         android:background="#000000" />
 
-    <LinearLayout
+    <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"></LinearLayout>
+        android:layout_height="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#000000" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#000000" />
 
 </LinearLayout>
