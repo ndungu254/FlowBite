@@ -116,8 +116,9 @@
             android:inputType="number"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="0"
+            android:text="2000"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
@@ -184,7 +185,7 @@
             android:inputType="number"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="1.56"
+            android:text="3"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />

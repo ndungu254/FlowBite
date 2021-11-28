@@ -102,7 +102,7 @@ public class MainActivity4 extends AppCompatActivity {
                    intent.putExtra("basicSalary", basic);
                    intent.putExtra("house allowance", houseAllowance);
                    intent.putExtra("commuterAllowance", commuterAllowance);
-                   intent.putExtra("otherAllowances", otherAllowances);
+                   intent.putExtra("otherallowance", otherAllowances);
                    intent.putExtra("overtimedays", overTime);
                    intent.putExtra("overTime", overtimeRate);
                    intent.putExtra("contributions", contributions);

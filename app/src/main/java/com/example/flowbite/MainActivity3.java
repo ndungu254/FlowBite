@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Random;
 
 public class MainActivity3 extends AppCompatActivity {
-    TextView payrollNumber,Name,basicSalary,house,commuter,overtime,grossPay,contribution,taxableIncome,taxChargeable,monthRelief,
+    TextView payrollNumber,Name,basicSalary,house,commuter,overtime,otherallawance,grossPay,contribution,taxableIncome,taxChargeable,monthRelief,
     payee,nhif,nssf,savings,totalDeductions,netPay;
     FirebaseAuth fAuth;
     Button logout;
@@ -32,6 +32,7 @@ public class MainActivity3 extends AppCompatActivity {
         house=findViewById(R.id.house);
         commuter=findViewById(R.id.commuter);
         overtime=findViewById(R.id.overtime);
+        otherallawance=findViewById(R.id.otherallowance);
         grossPay=findViewById(R.id.grosspay);
         contribution=findViewById(R.id.contribution);
         taxableIncome=findViewById(R.id.taxableIncome);
@@ -54,11 +55,10 @@ public class MainActivity3 extends AppCompatActivity {
         String basicsalary=intent.getStringExtra("basicSalary");
         String hallowance=intent.getStringExtra("house allowance");
         String callowance=intent.getStringExtra("commuterAllowance");
-        String otherAllowances=intent.getStringExtra("otherAllowances");
         String overtimeday=intent.getStringExtra("overtimedays");
         String over=intent.getStringExtra("overTime");
+        String otherAll=intent.getStringExtra("otherallowance");
         String contributions=intent.getStringExtra("contributions");
-        String overtimerate=intent.getStringExtra("overtimeRate");
         String saving=intent.getStringExtra("savings");
         Random random = new Random();
         @SuppressLint("DefaultLocale") String randomNumber = String.format("%04d8", random.nextInt(100000));
@@ -66,14 +66,15 @@ public class MainActivity3 extends AppCompatActivity {
         int basic=Integer.parseInt(basicsalary);
         int hallow=Integer.parseInt(hallowance);
         int commute=Integer.parseInt(callowance);
+        int other=Integer.parseInt(otherAll);
 
-        double overtimedays = 0;
-        double overtimera = 0;
+        int overtimedays =Integer.parseInt(overtimeday);
+        int overtimera =Integer.parseInt(over);
 
-        int totalOvertime= (int) (overtimedays*overtimera);
+        int totalOvertime=overtimedays*overtimera;
 
 
-        int totalGross= basic+commute+hallow+totalOvertime;
+        int totalGross= basic+commute+hallow+totalOvertime+other;
 
         int Contribute=Integer.parseInt(contributions);
         int Taxable=totalGross-Contribute;
