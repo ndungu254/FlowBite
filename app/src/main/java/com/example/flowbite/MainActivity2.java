@@ -1,10 +1,13 @@
 package com.example.flowbite;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,12 +18,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class MainActivity2 extends AppCompatActivity {
-    EditText etMail,etPassword,fName,lName,phone;
+    public static final String TAG1 = "TAG";
+    EditText etMail,etPassword,fName,lName,pnumber;
     Button btnLogin,btnSignup;
     FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
     ProgressBar progressBar;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +44,13 @@ public class MainActivity2 extends AppCompatActivity {
         btnSignup=findViewById(R.id.btnSignup);
         lName=findViewById(R.id.lName);
         fName=findViewById(R.id.fName);
-        phone=findViewById(R.id.phoneNumber);
+        pnumber=findViewById(R.id.phoneNumber);
         progressBar=findViewById(R.id.progressBar);
 
 
+
         fAuth=FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,9 +66,10 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 String mail=etMail.getText().toString().trim();
                 String password=etPassword.getText().toString().trim();
-                String lastName=etMail.getText().toString().trim();
-                String firstName=etPassword.getText().toString().trim();
-                String phone=etMail.getText().toString().trim();
+                String lastName=lName.getText().toString().trim();
+                String firstName=fName.getText().toString().trim();
+                String phone=pnumber.getText().toString().trim();
+                String fullName=firstName+" "+lastName;
 
                 if (mail.isEmpty()) {
                     etMail.setError("Email is empty");
@@ -83,17 +98,27 @@ public class MainActivity2 extends AppCompatActivity {
                 fAuth.createUserWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        if (task.isComplete()) {
+                        if (!task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "error ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             //etMail.setText("");
-                            progressBar.setVisibility(View.GONE);
                         }
                         else {
-                            progressBar.setVisibility(View.VISIBLE);
                             Toast.makeText(getApplicationContext(), "user created", Toast.LENGTH_SHORT).show();
+                            userID= Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
+                            DocumentReference documentReference=fStore.collection("user").document(userID);
+                            Map<String,Object> user=new HashMap<>();
+                            user.put("fullName",fullName);
+                            user.put("phone",phone);
+                            user.put("email",mail);
+                            documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(TAG1, "onComplete: user profle is create for "+fullName);
+                                    }
+                                }
+                            });
                             startActivity(new Intent(getApplicationContext(),MainActivity3.class));
-                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });

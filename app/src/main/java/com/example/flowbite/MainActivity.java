@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         fAuth=FirebaseAuth.getInstance();
+        btSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MainActivity2.class));
+            }
+        });
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,12 +61,13 @@ public class MainActivity extends AppCompatActivity {
                 fAuth.signInWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isComplete()) {
-                            Toast.makeText(getApplicationContext(), "Error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Error"+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "login success", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity3.class));
+
+                            startActivity(new Intent(getApplicationContext(),MainActivity4.class));
                         }
 
                     }

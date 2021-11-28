@@ -29,7 +29,8 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:paddingLeft="10dp" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 
 
     <EditText
@@ -41,7 +42,8 @@
         android:hint="password"
         android:inputType="numberPassword"
         android:minHeight="48dp"
-        android:paddingLeft="10dp" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

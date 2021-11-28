@@ -35,7 +35,8 @@
         android:fontFamily="@font/montserrat"
         android:hint="First name"
         android:minHeight="48dp"
-        android:paddingLeft="8dp" />
+        android:paddingLeft="8dp"
+        android:paddingRight="5dp" />
 
     <EditText
         android:id="@+id/lName"
@@ -50,6 +51,7 @@
         android:minHeight="48dp"
         android:paddingLeft="8dp"
         android:paddingTop="3dp"
+        android:paddingRight="5dp"
         android:paddingBottom="3dp" />
 
     <EditText
@@ -62,10 +64,11 @@
         android:background="@drawable/edditextbackground"
         android:fontFamily="@font/montserrat"
         android:hint="Phone"
-        android:inputType="phone"
+        android:inputType="number"
         android:minHeight="48dp"
         android:paddingLeft="8dp"
         android:paddingTop="3dp"
+        android:paddingRight="5dp"
         android:paddingBottom="3dp" />
 
 
@@ -83,6 +86,7 @@
         android:minHeight="48dp"
         android:paddingLeft="8dp"
         android:paddingTop="3dp"
+        android:paddingRight="5dp"
         android:paddingBottom="3dp" />
 
     <EditText
@@ -99,6 +103,7 @@
         android:minHeight="48dp"
         android:paddingLeft="8dp"
         android:paddingTop="3dp"
+        android:paddingRight="5dp"
         android:paddingBottom="3dp" />
 
     <LinearLayout

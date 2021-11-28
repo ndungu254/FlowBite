@@ -2,12 +2,21 @@ package com.example.flowbite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity3 extends AppCompatActivity {
     TextView payrollNumber,Name,basicSalary,house,commuter,overtime,grossPay,contribution,taxableIncome,taxChargeable,monthRelief,
     payee,nhif,nssf,savings,totalDeductions,netPay;
+    FirebaseAuth fAuth;
+    Button logout;
+    FirebaseFirestore fStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,20 @@ public class MainActivity3 extends AppCompatActivity {
         savings=findViewById(R.id.savings);
         totalDeductions=findViewById(R.id.totatdeductions);
         netPay=findViewById(R.id.netPay);
+        logout=findViewById(R.id.logOut);
         monthRelief.setText("Ksh2,400");
+        fAuth=FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
+
+
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fAuth.signOut();
+                startActivity(new Intent(getApplicationContext(),MainActivity3.class));
+            }
+        });
+
     }
 }

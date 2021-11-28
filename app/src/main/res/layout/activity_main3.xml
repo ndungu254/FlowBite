@@ -548,4 +548,12 @@
         android:layout_marginTop="0dp"
         android:background="#000000" />
 
+    <Button
+        android:id="@+id/logOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/buttonbackground"
+        android:text="LOGOUT" />
+
 </LinearLayout>
