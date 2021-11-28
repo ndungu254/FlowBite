@@ -3,6 +3,7 @@ package com.example.flowbite;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import org.w3c.dom.Text;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 public class MainActivity4 extends AppCompatActivity {
     public static final String TAG = "Tag";
@@ -51,28 +53,63 @@ public class MainActivity4 extends AppCompatActivity {
         fAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
 
-        String userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
+        Random random = new Random();
+        @SuppressLint("DefaultLocale") String generatedPassword = String.format("%04d", random.nextInt(10000));
 
-        tvid.setText(userID);
+
+
        calculate.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               DocumentReference documentReference=fStore.collection("record").document(userID);
-               Map<String,Object>  record=new HashMap<>();
-               record.put("bassicsallary",basicsalary);
-               record.put("house allowance",hallawance);
-               record.put("otherallowance",Otherallawance);
-               record.put("overtime days",overtime);
-               record.put("contributions",contribution);
-               record.put("savings",saving);
-               record.put("overtimerate",overtimerate);
-               documentReference.set(record).addOnSuccessListener(new OnSuccessListener<Void>() {
-                   @Override
-                   public void onSuccess(Void unused) {
-                       Toast.makeText(getApplicationContext(), "successful upload", Toast.LENGTH_SHORT).show();
-                       Log.d(TAG,"onsuccess:User upload for  "+userID);
-                   }
-               });
+
+               String basic=basicsalary.getText().toString().trim();
+               String houseAllowance=hallawance.getText().toString().trim();
+               String commuterAllowance=callawance.getText().toString().trim();
+               String otherAllowances=Otherallawance.getText().toString().trim();
+               String overTime=overtime.getText().toString().trim();
+               String contributions=contribution.getText().toString().trim();
+               String overtimeRate=overtimerate.getText().toString().trim();
+               String savings=saving.getText().toString().trim();
+
+
+
+
+               if (basic.isEmpty()) {
+                   basicsalary.setError("Field empty");
+               }
+               if (houseAllowance.isEmpty()) {
+                   hallawance.setError("Field empty");
+               }
+               if (commuterAllowance.isEmpty()) {
+                   callawance.setError("Field empty");
+               }
+               if (otherAllowances.isEmpty()) {
+                   Otherallawance.setError("Field empty");
+               }
+               if (overTime.isEmpty()) {
+                   overtime.setError("Field empty");
+               }
+               if (overtimeRate.isEmpty()) {
+                   overtimerate.setError("Field empty");
+               }
+               if (contributions.isEmpty()) {
+                   contribution.setError("Field empty");
+               }
+               if (savings.isEmpty()) {
+                   saving.setError("fields empty");
+               } else {
+                   Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                   intent.putExtra("basicSalary", basic);
+                   intent.putExtra("house allowance", houseAllowance);
+                   intent.putExtra("commuterAllowance", commuterAllowance);
+                   intent.putExtra("otherAllowances", otherAllowances);
+                   intent.putExtra("overtimedays", overTime);
+                   intent.putExtra("overTime", overtimeRate);
+                   intent.putExtra("contributions", contributions);
+                   intent.putExtra("savings",savings);
+                   startActivity(intent);
+
+               }
            }
        });
 

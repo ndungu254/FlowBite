@@ -18,6 +18,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
         android:paddingBottom="10dp"
+        android:text="Infirmation needed to calculate tax and Net Pay in Ksh"
         android:textSize="16sp" />
 
     <LinearLayout
@@ -45,10 +46,10 @@
             android:ems="10"
             android:fontFamily="@font/montserrat"
             android:gravity="right"
-            android:inputType="number"
+            android:inputType="textPersonName"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="0.00"
+            android:text="42444"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -81,7 +82,7 @@
             android:inputType="number"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="0.00"
+            android:text="11000"
             android:textSize="18sp"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -115,7 +116,7 @@
             android:inputType="number"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="0.00"
+            android:text="0"
             android:textSize="18sp"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
@@ -148,7 +149,7 @@
             android:inputType="number"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="0.00"
+            android:text="500"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -183,7 +184,7 @@
             android:inputType="number"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="0"
+            android:text="1.56"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -217,7 +218,7 @@
             android:inputType="number"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="0.00"
+            android:text="3183"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -251,7 +252,7 @@
             android:inputType="number"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="0.00"
+            android:text="0"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -286,7 +287,7 @@
             android:inputType="number"
             android:paddingTop="5dp"
             android:paddingBottom="0dp"
-            android:text="0.00"
+            android:text="2500"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck" />

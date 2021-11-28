@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
         android:hint="Payroll number :123544"
+        android:textColor="#000000"
         android:textColorHint="#000000"
         android:textSize="17sp" />
 
