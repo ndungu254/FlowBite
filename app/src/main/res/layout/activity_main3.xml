@@ -28,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
+        android:gravity="center_horizontal"
         android:hint="Payroll number :123544"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -38,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
+        android:gravity="center_horizontal"
         android:hint="Name:Collins Mugo"
         android:textColorHint="#000000"
         android:textSize="17sp" />
@@ -81,6 +83,13 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#000000" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,13 +114,6 @@
             android:text="Ksh113,850"
             android:textSize="16sp" />
     </LinearLayout>
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:background="#000000" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -425,6 +427,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
+            android:fontFamily="@font/montserrat"
             android:text="Ksh2,422"
             android:textSize="16sp" />
     </LinearLayout>
@@ -576,10 +579,20 @@
 
     <Button
         android:id="@+id/logOut"
-        android:layout_width="match_parent"
+        android:layout_width="270dp"
+        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/buttonbackground"
         android:text="LOGOUT" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttonbackground"
+        android:text="Button" />
 
 </LinearLayout>

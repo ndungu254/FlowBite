@@ -118,7 +118,12 @@ public class MainActivity2 extends AppCompatActivity {
                                     }
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),MainActivity3.class));
+                            startActivity(new Intent(getApplicationContext(),MainActivity4.class));
+                            etMail.setText("");
+                            etPassword.setText("");
+                            lName.setText("");
+                            fName.setText("");
+                            pnumber.setText("");
                         }
                     }
                 });

@@ -49,7 +49,7 @@
             android:inputType="textPersonName"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:text="42444"
+            android:text="424444"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />

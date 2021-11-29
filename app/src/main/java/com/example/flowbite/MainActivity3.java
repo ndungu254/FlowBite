@@ -1,5 +1,6 @@
 package com.example.flowbite;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -10,8 +11,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class MainActivity3 extends AppCompatActivity {
@@ -45,67 +52,64 @@ public class MainActivity3 extends AppCompatActivity {
         totalDeductions=findViewById(R.id.totatdeductions);
         netPay=findViewById(R.id.netPay);
         logout=findViewById(R.id.logOut);
+
+        monthRelief.setText("Ksh2,400");
         fAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
+        String userId= Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
 
 
 
 
-        Intent intent=getIntent();
+        DocumentReference documentReference=fStore.collection("record").document(userId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                payrollNumber.setText("Ksh"+documentSnapshot.getString("payrollId"));
+                basicSalary.setText("Ksh"+documentSnapshot.getString("basicSalary"));
+                house.setText("Ksh"+documentSnapshot.getString("savings"));
+                commuter.setText(""+documentSnapshot.getString("commuterAllowance"));
+                overtime.setText("Ksh"+documentSnapshot.getString("totalOvertime"));
+                otherallawance.setText("Ksh"+documentSnapshot.getString("otherAllowance"));
+                grossPay.setText("Ksh"+documentSnapshot.getString("grossPay"));
+                contribution.setText("Ksh"+documentSnapshot.getString("contributions"));
+                taxableIncome.setText("Ksh"+documentSnapshot.getString("taxableIncome"));
+                taxChargeable.setText("Ksh"+documentSnapshot.getString("taxChargeable"));
+                payee.setText("Ksh"+documentSnapshot.getString("payee"));
+                nhif.setText("Ksh"+documentSnapshot.getString("NHIF"));
+                nssf.setText("Ksh"+documentSnapshot.getString("NSSF"));
+                savings.setText("Ksh"+documentSnapshot.getString("savings"));
+                totalDeductions.setText("Ksh"+documentSnapshot.getString("totalDeductions"));
+                netPay.setText("Ksh"+documentSnapshot.getString("netpay"));
+
+            }
+        });
+
+        /*Intent intent=getIntent();
         String basicsalary=intent.getStringExtra("basicSalary");
         String hallowance=intent.getStringExtra("house allowance");
         String callowance=intent.getStringExtra("commuterAllowance");
-        String overtimeday=intent.getStringExtra("overtimedays");
-        String over=intent.getStringExtra("overTime");
         String otherAll=intent.getStringExtra("otherallowance");
         String contributions=intent.getStringExtra("contributions");
         String saving=intent.getStringExtra("savings");
-        Random random = new Random();
-        @SuppressLint("DefaultLocale") String randomNumber = String.format("%04d8", random.nextInt(100000));
-
-        int basic=Integer.parseInt(basicsalary);
-        int hallow=Integer.parseInt(hallowance);
-        int commute=Integer.parseInt(callowance);
-        int other=Integer.parseInt(otherAll);
-
-        int overtimedays =Integer.parseInt(overtimeday);
-        int overtimera =Integer.parseInt(over);
-
-        int totalOvertime=overtimedays*overtimera;
+        String randomNumber=intent.getStringExtra("payrollId");
+        String totalOvertime=intent.getStringExtra("totalOvertime");
+        String totalGross=intent.getStringExtra("totalGrossPay");
+        String Taxable=intent.getStringExtra("taxableIncome");
+        String tax=intent.getStringExtra("Tax");
+        String paye=intent.getStringExtra("payee");
+        String NHIF=intent.getStringExtra("NHIF");
+        String NSSF=intent.getStringExtra("NSSF");
+        String totalDedu=intent.getStringExtra("totalDeductions");
+        String netpyy=intent.getStringExtra("netPay");*/
 
 
-        int totalGross= basic+commute+hallow+totalOvertime+other;
-
-        int Contribute=Integer.parseInt(contributions);
-        int Taxable=totalGross-Contribute;
-        int tax = 0;
-        if (basic<24000){
-            tax= (int) (0.1*24000);
-        }
-        if (basic-24000<8333){
-            tax= (int) ((basic-2400)*0.25+24000*0.1);
-        }
-        if (basic>32333){
-            tax= (int) (8333*0.25+24000*0.1+(basic-32333)*0.3);
-        }
-
-        int paye= (int) (tax-2400);
-        int NHIF= (int) (basic *0.12);
-        int NSSF= (int) (basic *0.15);
-        int savin=Integer.parseInt(saving);
-
-        int totalDedu=paye+NHIF+NSSF+savin;
-        int netpyy=totalGross-totalDedu;
-
-
-
-        payrollNumber.setText("Payroll number :"+randomNumber);
-
-
+        /*payrollNumber.setText("Payroll number :"+randomNumber);
         basicSalary.setText("Ksh"+basicsalary);
         house.setText("Ksh"+hallowance);
         commuter.setText(""+callowance);
         overtime.setText("Ksh"+totalOvertime);
+        otherallawance.setText("Ksh"+otherAll);
         grossPay.setText("Ksh"+totalGross);
         contribution.setText("Ksh"+contributions);
         taxableIncome.setText("Ksh"+Taxable);
@@ -114,18 +118,13 @@ public class MainActivity3 extends AppCompatActivity {
         payee.setText("Ksh"+paye);
         nhif.setText("Ksh"+NHIF);
         nssf.setText("Ksh"+NSSF);
-        savings.setText("Ksh"+savin);
+        savings.setText("Ksh"+saving);
         totalDeductions.setText("Ksh"+totalDedu);
-        netPay.setText("Ksh"+netpyy);
+        netPay.setText("Ksh"+netpyy);*/
 
 
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            }
-        });
+        logout.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),MainActivity.class)));
 
     }
 

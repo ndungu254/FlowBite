@@ -52,9 +52,11 @@ public class MainActivity4 extends AppCompatActivity {
         tvid=findViewById(R.id.tvid);
         fAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
+        String uid=fAuth.getCurrentUser().getUid();
 
         Random random = new Random();
-        @SuppressLint("DefaultLocale") String generatedPassword = String.format("%04d", random.nextInt(10000));
+        @SuppressLint("DefaultLocale") String recordId = String.format("%04d", random.nextInt(100000));
+
 
 
 
@@ -70,8 +72,6 @@ public class MainActivity4 extends AppCompatActivity {
                String contributions=contribution.getText().toString().trim();
                String overtimeRate=overtimerate.getText().toString().trim();
                String savings=saving.getText().toString().trim();
-
-
 
 
                if (basic.isEmpty()) {
@@ -98,19 +98,68 @@ public class MainActivity4 extends AppCompatActivity {
                if (savings.isEmpty()) {
                    saving.setError("fields empty");
                } else {
-                   Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
-                   intent.putExtra("basicSalary", basic);
-                   intent.putExtra("house allowance", houseAllowance);
-                   intent.putExtra("commuterAllowance", commuterAllowance);
-                   intent.putExtra("otherallowance", otherAllowances);
-                   intent.putExtra("overtimedays", overTime);
-                   intent.putExtra("overTime", overtimeRate);
-                   intent.putExtra("contributions", contributions);
-                   intent.putExtra("savings",savings);
+                   Intent intent=new Intent(getApplicationContext(),MainActivity3.class);
+
+                   int basicsalary=Integer.parseInt(basic);
+                   int hallow=Integer.parseInt(houseAllowance);
+                   int commute=Integer.parseInt(commuterAllowance);
+                   int other=Integer.parseInt(otherAllowances);
+                   int overtimedays =Integer.parseInt(overTime);
+                   int overtimera =Integer.parseInt(overtimeRate);
+                   int totalOvertime=overtimedays*overtimera;
+                   int totalGross= basicsalary+commute+hallow+totalOvertime+other;
+                   int Contribute=Integer.parseInt(contributions);
+                   int Taxable=totalGross-Contribute;
+                   int tax = 0;
+                   if (basicsalary<24000){
+                       tax= (int) (0.1*24000);
+                   }
+                   if (basicsalary-24000<8333){
+                       tax= (int) ((basicsalary-2400)*0.25+24000*0.1);
+                   }
+                   if (basicsalary>32333){
+                       tax= (int) (8333*0.25+24000*0.1+(basicsalary-32333)*0.3);
+                   }
+
+                   int paye= (int) (tax-2400);
+                   int NHIF= (int) (basicsalary *0.12);
+                   int NSSF= (int) (basicsalary *0.15);
+                   int savin=Integer.parseInt(savings);
+
+                   int totalDedu=paye+NHIF+NSSF+savin;
+                   int netpyy=totalGross-totalDedu;
+
+
                    startActivity(intent);
 
+
+                   DocumentReference documentReference=fStore.collection("record").document(uid);
+                   Map<String,Object>  user=new HashMap<>();
+                   user.put("basicSalary",basicsalary);
+                   user.put("savings",savings);
+                   user.put("random",recordId);
+                   user.put("houseAllowance",houseAllowance);
+                   user.put("commuterAllowance",commuterAllowance);
+                   user.put("otherAllowance",other);
+                   user.put("grossPay",totalGross);
+                   user.put("totalOvertime",totalOvertime);
+                   user.put("contributions",contributions);
+                   user.put("netpay",netpyy);
+                   user.put("taxChargeable",tax);
+                   user.put("taxableIncome",Taxable);
+                   user.put("payee",paye);
+                   user.put("totalDeductions",totalDedu);
+                   user.put("NHIF",NHIF);
+                   user.put("NSSF",NSSF);
+                   documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                       @Override
+                       public void onComplete(@NonNull Task<Void> task) {
+                           Toast.makeText(getApplicationContext(), "Record created", Toast.LENGTH_SHORT).show();
+                       }
+                   });
+                   }
                }
-           }
+
        });
 
     }

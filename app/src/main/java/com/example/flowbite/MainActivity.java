@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     EditText etMail,etPassword;
     Button btLogin,btSignup;
@@ -62,12 +64,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Error"+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Error"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "login success", Toast.LENGTH_SHORT).show();
 
                             startActivity(new Intent(getApplicationContext(),MainActivity4.class));
+                            etMail.setText("");
+                            etPassword.setText("");
                         }
 
                     }
